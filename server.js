@@ -5,6 +5,10 @@ const crypto = require("crypto");
 appData.listen(8092);
 
 appData.use(oExpress.json());
+// MidlleWare data
+
+appData.use("/",oExpress.static("webapp/"))
+
 this.empData =   [
         
     {
@@ -67,3 +71,10 @@ appData.post("/vendors",(req, resp) =>{
     resp.json(postVendorData);
 
 });
+
+// Fiori app
+
+appData.get("/index.html", (req, resp) =>{
+
+        resp.sendFile(__dirname + "/webapp/index.html")
+})
